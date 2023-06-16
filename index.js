@@ -392,7 +392,7 @@ async function run() {
 
         })
 
-        // All delete items
+        // delete items
         app.delete('/selectedClasses/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
