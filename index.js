@@ -169,7 +169,6 @@ async function run() {
         // my enrollment
         app.get('/myEnrolledClasses', verifyJWT, async (req, res) => {
             const email = req.query.email;
-            console.log(email);
 
             if (!email) {
                 res.send([]);
@@ -191,7 +190,6 @@ async function run() {
         // payment history
         app.get('/myPaymentHistories', verifyJWT, async (req, res) => {
             const email = req.query.email;
-            console.log(email);
 
             if (!email) {
                 res.send([]);
@@ -214,7 +212,6 @@ async function run() {
         // my classes (instructor)
         app.get('/myClasses', verifyJWT, verifyInstructor, async (req, res) => {
             const email = req.query.email;
-            console.log(email);
 
             if (!email) {
                 res.send([]);
@@ -302,7 +299,6 @@ async function run() {
                     price: updatedClass.price
                 }
             }
-            console.log(cls);
             const result = await classesCollection.updateOne(filter, cls, options);
             res.send(result);
         })
@@ -310,7 +306,6 @@ async function run() {
         // make admin
         app.patch('/users/admin/:id', async (req, res) => {
             const id = req.params.id;
-            console.log(id);
             const filter = { _id: new ObjectId(id) };
             const updateDoc = {
                 $set: {
@@ -326,7 +321,6 @@ async function run() {
         // make instructor
         app.patch('/users/instructor/:id', async (req, res) => {
             const id = req.params.id;
-            console.log(id);
             const filter = { _id: new ObjectId(id) };
             const updateDoc = {
                 $set: {
@@ -355,7 +349,6 @@ async function run() {
                 const result = await classesCollection.updateOne(filter, updateDoc);
                 res.send(result);
             } catch (error) {
-                console.error(error);
                 res.status(500).send("Internal Server Error");
             }
         });
@@ -363,7 +356,6 @@ async function run() {
         // class approve
         app.patch('/classes/approve/:id', async (req, res) => {
             const id = req.params.id;
-            console.log(id);
             const filter = { _id: new ObjectId(id) };
             const updateDoc = {
                 $set: {
@@ -379,7 +371,6 @@ async function run() {
         // class deny
         app.patch('/classes/deny/:id', async (req, res) => {
             const id = req.params.id;
-            console.log(id);
             const filter = { _id: new ObjectId(id) };
             const updateDoc = {
                 $set: {
