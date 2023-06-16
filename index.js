@@ -131,14 +131,7 @@ async function run() {
             const result = await classesCollection.find().toArray();
             res.send(result);
         })
-        // app.get('/selectedClasses', async (req, res) => {
-        //     const result = await selectedClassesCollection.find().toArray();
-        //     res.send(result);
-        // })
-
-        // security layer: verifyJWT
-        // email same
-        // check admin
+        
         app.get('/users/admin/:email', verifyJWT, async (req, res) => {
             const email = req.params.email;
 
