@@ -92,6 +92,7 @@ async function run() {
             res.send(result);
         });
 
+
         app.get('/instructors', verifyJWT, async (req, res) => {
             const result = await usersCollection.find({ role: "instructor" }).toArray();
             res.send(result);
@@ -286,7 +287,7 @@ async function run() {
             res.send({ insertResult, deleteResult });
         })
 
-        // my class update
+        // class update
         app.put('/classes/:id', async (req, res) => {
             const id = req.params.id;
             const filter = { _id: new ObjectId(id) }
