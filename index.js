@@ -275,16 +275,16 @@ async function run() {
         })
 
         // payment delete and post
-        // app.post('/payments', verifyJWT, async (req, res) => {
-        //     const payment = req.body;
-        //     const insertResult = await paymentsCollection.insertOne(payment);
+        app.post('/payments', verifyJWT, async (req, res) => {
+            const payment = req.body;
+            const insertResult = await paymentsCollection.insertOne(payment);
 
-        //     const query = { _id: new ObjectId(payment.id) };
+            const query = { _id: new ObjectId(payment.id) };
 
-        //     const deleteResult = await selectedClassesCollection.deleteOne(query)
+            const deleteResult = await selectedClassesCollection.deleteOne(query)
 
-        //     res.send({ insertResult, deleteResult });
-        // })
+            res.send({ insertResult, deleteResult });
+        })
 
         // my class update
         app.put('/classes/:id', async (req, res) => {
