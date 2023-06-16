@@ -97,9 +97,7 @@ async function run() {
             res.send(result);
         });
 
-        // security layer: verifyJWT
-        // email same
-        // check admin
+        
         app.get('/users/admin/:email', verifyJWT, async (req, res) => {
             const email = req.params.email;
 
