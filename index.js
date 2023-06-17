@@ -93,7 +93,7 @@ async function run() {
         });
 
 
-        app.get('/instructors', verifyJWT, async (req, res) => {
+        app.get('/instructors',  async (req, res) => {
             const result = await usersCollection.find({ role: "instructor" }).toArray();
             res.send(result);
         });
